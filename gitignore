@@ -1,5 +1,5 @@
 # 제외 폴더
-/Library/*
+/Library
 /Logs
 /obj
 /Temp
