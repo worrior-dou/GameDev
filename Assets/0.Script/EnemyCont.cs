@@ -13,7 +13,7 @@ public class EnemyCont : MonoBehaviour
     [SerializeField] private Transform parent;
     [SerializeField] private List<DataScript> datas;
 
-    float spawnTimer = 0;
+    private float spawnTimer = 0;
 
     public static EnemyCont Instance;
 
@@ -24,8 +24,6 @@ public class EnemyCont : MonoBehaviour
 
     void Start()
     {
-        if ( parent.childCount < 5)
-            Invoke("CreateEnemy", 3f);
     }
 
     void Update()
@@ -33,12 +31,18 @@ public class EnemyCont : MonoBehaviour
         spawnTimer += Time.deltaTime;
         if (spawnTimer > 2f)
         {
-            spawnTimer = 0;
+            spawnTimer = 0; 
+            if (transform.childCount < 5)
+            {
+                CreateEnemy();
+            }
         }
+        
     }
     void CreateEnemy()
     {
         Enemy e = Instantiate(this.e, parent);
+
         //랜덤 몬스터 생성
         int rand = Random.Range(0, datas.Count);
         Debug.Log(rand);
