@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEnemy
 {    
-    void Create(GameObject obj);
+    void Create(GameObject obj, Transform parent);
 }

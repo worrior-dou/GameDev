@@ -58,7 +58,8 @@ public class EnemyCont : MonoBehaviour
             {
                 int rand = Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
                 SetEnemyType((EnemyType)rand);
-                Instantiate(obj, parent);
+                //Instantiate(obj, parent);
+                Spawn();
             }
         }
     }
@@ -79,7 +80,7 @@ public class EnemyCont : MonoBehaviour
 
     public void Spawn()
     {
+        enemy.Create(obj, parent);
         //enemy.Shooting();
-        enemy.Create(obj);
     }
 }
