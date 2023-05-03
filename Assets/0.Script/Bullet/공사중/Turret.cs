@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public static Turret Instance;
-    void Awake()
+    Transform player;
+
+    void Start()
     {
-        Instance = this;
+        player = GameObject.Find("Player").transform;        
     }
 
-    public void LookPlayer(Transform playerPos)
+    void Update()
     {
-        if (playerPos != null)
-        {
-            //플레이어 쳐다보기
-            Vector2 vec = transform.position - playerPos.position;
-            float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        }
-        else
-            transform.localRotation = Quaternion.Euler(Vector3.zero);
+        //플레이어 쳐다보기
+        Vector2 vec = transform.position - player.position;
+        float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 }
