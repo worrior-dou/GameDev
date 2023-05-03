@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveShift : MonoBehaviour, MoveStrategy
+public class MoveShift : MonoBehaviour
 {
     private float x;
     private bool dir = true;

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class MoveRound : MonoBehaviour, MoveStrategy
+public class MoveRound : MonoBehaviour
 {
     private Vector3 center;
     private float angle;
