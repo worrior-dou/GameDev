@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MoveRound : MonoBehaviour
 {
-    private Vector3 center;
-    private float angle;
-    private float radius;
-    private float speed;
+    Vector3 center;
+    float angle;
+    float radius;
+    float speed;
 
     public MoveRound(Vector3 center, float radius, float speed)
     {

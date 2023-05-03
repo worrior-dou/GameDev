@@ -59,7 +59,6 @@ public class EnemyCont : MonoBehaviour
                 int rand = Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
                 SetEnemyType((EnemyType)rand);
                 enemy.Create(obj, parent);
-                //Shoot();
             }
         }
     }
@@ -76,10 +75,5 @@ public class EnemyCont : MonoBehaviour
     public void ChangeEnemyC()
     {
         SetEnemyType(EnemyType.C);
-    }
-
-    public void Shoot()
-    {
-        //enemy.Shooting();
     }
 }

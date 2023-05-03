@@ -5,6 +5,11 @@ using UnityEngine;
 public class TurretCont : MonoBehaviour
 {
     [SerializeField] private Transform playerPos;
+    Turret turret;
+
+    void Start()
+    {
+    }
 
     void Update()
     {
