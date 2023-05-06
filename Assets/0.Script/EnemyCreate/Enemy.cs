@@ -5,12 +5,25 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private IEnemy enemy;
+    public int score;
     public int health;
     SpriteRenderer sr;
+    Player player;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+    }
+    void Start()
+    {
+        player = GameObject.Find("Player").GetComponent<Player>();
+    }
+    void Update()
+    {
+        if (transform.position.y < -6.5f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void setEnemy(IEnemy enemy)
@@ -25,7 +38,8 @@ public class Enemy : MonoBehaviour
         Invoke("ReturnColor", 0.2f);
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            player.score += score;
+            Destroy(gameObject);
         }
     }
     void ReturnColor()

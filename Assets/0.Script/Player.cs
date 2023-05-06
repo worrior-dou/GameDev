@@ -12,17 +12,29 @@ public class Player : MonoBehaviour
     public int power;
     public Sprite[] sp;
 
+    public int lifeValue;
+    public int score;
+    public int coin;
+
+    SpriteRenderer sr;
     Animator anim;
 
     [SerializeField] private Transform parentTemp;
+    [SerializeField] private UiManager UiManager;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
+        lifeValue = 3;
+        UiManager.UpdateLifeIcon(lifeValue);
+        score = 0;
+        coin = 0;
+        power = 1;
     }
 
     void Update()
@@ -65,7 +77,10 @@ public class Player : MonoBehaviour
             //CreatBP(총알속도, 총알생성위치, 임시부모, 총알스프라이트)
             GameObject bullet = BulletPool.Instance.CreateBP(power, speedBullet, transform, parentTemp, sp[power-1]);
         }
-        BulletPool.Instance.Play(power, speedBullet, sp[power-1]);
+        else
+        {
+            BulletPool.Instance.Play(power, speedBullet, sp[power-1]);
+        }
 
         curShootDelay = 0;
     }
@@ -73,5 +88,38 @@ public class Player : MonoBehaviour
     void Reload()
     {
         curShootDelay += Time.deltaTime;
+    }
+
+    void OnHit()
+    {
+        //무적시간 추가
+
+        //life판정
+        lifeValue--; 
+        if (lifeValue < 0)
+        {
+            Debug.Log("죽었습니다!");
+            UiManager.GameOver();
+        }
+        else
+        {
+            UiManager.DeleteLifeIcon();
+        }
+        //피격 모션
+        sr.color = new Color(0.75f, 0.75f, 0.75f, 1f);
+        Invoke("ReturnColor", 0.2f);
+    }
+    void ReturnColor()
+    {
+        sr.color = new Color(1f, 1f, 1f, 1f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            OnHit();
+            Destroy(collision.gameObject);
+        }
     }
 }
