@@ -6,8 +6,8 @@ public class Enemy_C : MonoBehaviour, IEnemy
 {
     float x;
     bool dir = true;//¿À¸¥ÂÊ
-    float speedX = 1f;
-    float speedY = 0.25f;
+    float speedX = 0.2f;
+    float speedY = 2f;
     float screen_left = -3f, screen_right = 3f;
 
     void Update()

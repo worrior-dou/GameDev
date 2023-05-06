@@ -11,7 +11,7 @@ public class Enemy_A : MonoBehaviour, IEnemy
     float speed = 3f;
 
     float screen_left = -3f, screen_right = 3f;
-    float screen_bottom = -5.3f, screen_top = 5f;
+    //float screen_bottom = -6f, screen_top = 8f;
 
     void Awake()
     {
@@ -36,11 +36,11 @@ public class Enemy_A : MonoBehaviour, IEnemy
         float x = center.x + Mathf.Cos(angle) * radiusX;
         float y = center.y + Mathf.Sin(angle) * radiusY;
         float clampX = Mathf.Clamp(x, screen_left, screen_right);
-        float clampY = Mathf.Clamp(y, screen_bottom, screen_top);
+        //float clampY = Mathf.Clamp(y, screen_bottom, screen_top);
         //조금씩 내려옴
         center.y -= 0.6f * Time.deltaTime;
 
-        transform.position = new Vector3(clampX, clampY, transform.position.z);
+        transform.position = new Vector3(clampX, y, transform.position.z);
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
