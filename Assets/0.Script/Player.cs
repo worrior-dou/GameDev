@@ -16,6 +16,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
     public SpriteRenderer sr;
 
+    Animator anim;
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
         sr = transform.GetComponent<SpriteRenderer>();
@@ -31,12 +38,11 @@ public class Player : MonoBehaviour
 
         transform.position = new Vector2(clampX, clampY);
 
-        //방향에 따른 이미지 변경
-        if (x == 0)
-            sr.sprite = sprites[(int)dir.center];
-        else if (x < 0)
-            sr.sprite = sprites[(int)dir.left];
-        else if(x > 0)
-            sr.sprite = sprites[(int)dir.right];
+        //방향에 따른 이미지 변경(feat.Animator)
+        if (Input.GetButtonDown("Horizontal") ||
+            Input.GetButtonUp("Horizontal"))
+        {
+            anim.SetInteger("Input", (int)Input.GetAxisRaw("Horizontal"));
+        }
     }
 }
