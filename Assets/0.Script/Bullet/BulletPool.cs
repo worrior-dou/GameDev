@@ -41,10 +41,11 @@ public class BulletPool : Singletone<BulletPool>
     }
 
     //생성
-    public GameObject CreateBP(float speed, Transform parent, Transform parentTemp, Sprite sp)
+    public GameObject CreateBP(int dmg, float speed, Transform parent, Transform parentTemp, Sprite sp)
     {
         Bullet_p b = Instantiate(bullet, parent);
-        b.SetData(speed, parent, parentTemp);
+        b.SetBulletStat(dmg, speed);
+        b.SetParents(parent, parentTemp);
         b.SetSprite(sp);
         pools.Enqueue(b);
         return b.gameObject;
@@ -68,9 +69,10 @@ public class BulletPool : Singletone<BulletPool>
     }
 
     //활용
-    public void Play(Sprite sp)
+    public void Play(int dmg, float speed, Sprite sp)
     {
         Bullet_p b = pools.Dequeue();
+        b.SetBulletStat(dmg, speed);
         b.SetSprite(sp);
         b.SetParentTemp();
         b.gameObject.SetActive(true);

@@ -5,13 +5,18 @@ using UnityEngine;
 public class Bullet_p : MonoBehaviour
 {
     float speed;
+    [HideInInspector] public int dmg;
     Transform parent;
     Transform parentTemp;
     SpriteRenderer sr;
 
-    public void SetData(float speed, Transform parent, Transform parentTemp)
+    public  void SetBulletStat(int dmg, float speed)
     {
+        this.dmg = dmg;
         this.speed = speed;
+    }
+    public void SetParents(Transform parent, Transform parentTemp)
+    {
         this.parent = parent;
         this.parentTemp = parentTemp;
         SetParentTemp();
@@ -25,6 +30,7 @@ public class Bullet_p : MonoBehaviour
     {
         this.sr.sprite = sp;
     }
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -45,7 +51,7 @@ public class Bullet_p : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             ReadyForPool();
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
     }
 
