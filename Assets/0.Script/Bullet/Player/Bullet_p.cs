@@ -51,7 +51,6 @@ public class Bullet_p : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             ReadyForPool();
-            //Destroy(collision.gameObject);
         }
     }
 

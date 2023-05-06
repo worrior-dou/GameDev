@@ -51,7 +51,7 @@ public class EnemyCont : MonoBehaviour
     void Update()
     {
         spawnTimer += Time.deltaTime;
-        if (spawnTimer > 1f)
+        if (spawnTimer > Random.Range(2f, 4f))
         {
             spawnTimer = 0;
             if (parent.childCount < 10)
