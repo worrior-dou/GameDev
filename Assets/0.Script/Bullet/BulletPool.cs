@@ -32,6 +32,7 @@ public class BulletPool : Singletone<BulletPool>
             return true;
         return false;
     }
+
     public bool CheckPoolE()
     {
         if (poolsE.Count == 0)
@@ -40,12 +41,15 @@ public class BulletPool : Singletone<BulletPool>
     }
 
     //생성
-    public void CreateBP(float speed, Transform parent, Transform parentTemp)
+    public GameObject CreateBP(float speed, Transform parent, Transform parentTemp, Sprite sp)
     {
         Bullet_p b = Instantiate(bullet, parent);
         b.SetData(speed, parent, parentTemp);
+        b.SetSprite(sp);
         pools.Enqueue(b);
+        return b.gameObject;
     }
+
     public void CreateBE(float speed, Transform parent, Transform parentTemp)
     {
         Bullet_e e = Instantiate(bulletE, parent);
@@ -64,9 +68,10 @@ public class BulletPool : Singletone<BulletPool>
     }
 
     //활용
-    public void Play()
+    public void Play(Sprite sp)
     {
         Bullet_p b = pools.Dequeue();
+        b.SetSprite(sp);
         b.SetParentTemp();
         b.gameObject.SetActive(true);
     }
