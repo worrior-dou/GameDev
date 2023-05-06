@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet_e : MonoBehaviour
 {
     public float speed = 2f;
-    Transform parent;
+    [HideInInspector] public Transform parent;
     Transform parentTemp;
     public Sprite[] bulletSprite;
     public SpriteRenderer sr;
@@ -16,7 +16,7 @@ public class Bullet_e : MonoBehaviour
         this.parent = parent;
         this.parentTemp = parentTemp;
         SetParentTemp();
-        SetSprite(parent, sr.sprite);
+        SetSprite(sr.sprite);
     }
 
     public void SetParentTemp()
@@ -24,28 +24,14 @@ public class Bullet_e : MonoBehaviour
         transform.SetParent(parentTemp);
     }
 
-    public void SetSprite(Transform parent, Sprite sp)
+    public void SetSprite(Sprite sp)
     {
-        switch (parent.name)
-        {
-            default:
-            case "TurretA":
-                sp = bulletSprite[0];
-                break;
-            case "TurretB":
-                sp = bulletSprite[1];
-                break;
-            case "TurretL":
-            case "TurretR":
-                sp = bulletSprite[2];
-                break;
-
-        }
+        this.sr.sprite = sp;
     }
 
-    void Start()
+    void Awake()
     {
-        //Debug.Log(parent.name);
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -55,6 +41,9 @@ public class Bullet_e : MonoBehaviour
         // 멀리가면 : 비활성화, 객체 재활용
         if (transform.localPosition.y < -10f)
             ReadyForPool();
+        if (parent is null)
+            ReadyForPool();
+
     }
     void ReadyForPool()
     {
@@ -63,5 +52,15 @@ public class Bullet_e : MonoBehaviour
         transform.localRotation = Quaternion.Euler(Vector3.zero);
         BulletPool.Instance.ReturnBE(this);
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Bullet_p bullet = collision.gameObject.GetComponent<Bullet_p>();
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }

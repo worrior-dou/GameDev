@@ -80,7 +80,11 @@ public class BulletPool : Singletone<BulletPool>
     public void PlayE()
     {
         Bullet_e e = poolsE.Dequeue();
-        e.SetParentTemp();
+        if (e == null)
+        {
+            return;
+        }
+            e.SetParentTemp();
         e.gameObject.SetActive(true);
     }
 

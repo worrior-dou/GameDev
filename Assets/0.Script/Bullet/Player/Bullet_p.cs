@@ -5,12 +5,12 @@ using UnityEngine;
 public class Bullet_p : MonoBehaviour
 {
     float speed;
-    [HideInInspector] public int dmg;
+    public int dmg;
     Transform parent;
     Transform parentTemp;
     SpriteRenderer sr;
 
-    public  void SetBulletStat(int dmg, float speed)
+    public void SetBulletStat(int dmg, float speed)
     {
         this.dmg = dmg;
         this.speed = speed;
