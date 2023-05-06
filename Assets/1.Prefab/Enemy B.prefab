@@ -156,7 +156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5398852899481751147, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: TurretB
       objectReference: {fileID: 0}
     - target: {fileID: 5398852899481751148, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_RootOrder

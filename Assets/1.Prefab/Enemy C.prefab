@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132724570011737357}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.4433384, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -157,7 +157,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5398852899481751147, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_Name
-      value: Turret L
+      value: TurretL
       objectReference: {fileID: 0}
     - target: {fileID: 5398852899481751148, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_RootOrder
@@ -223,7 +223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5398852899481751147, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_Name
-      value: Turret R
+      value: TurretR
       objectReference: {fileID: 0}
     - target: {fileID: 5398852899481751148, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_RootOrder

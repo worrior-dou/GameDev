@@ -13,7 +13,6 @@ public class EnemySpawn : MonoBehaviour
     }
     public void Create(GameObject obj)
     {
-        //enemy.Create();
-        Debug.Log(obj.name);
+        //Debug.Log(obj.name);
     }
 }

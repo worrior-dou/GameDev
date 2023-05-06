@@ -13,6 +13,7 @@ public class BulletController_e : Singletone<BulletController_e>
     {
         parentTemp = GameObject.Find("Temp_parent").transform;
     }
+
     void Update()
     {
         Play();

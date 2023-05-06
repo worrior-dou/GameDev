@@ -25,7 +25,7 @@ public class Enemy_B : MonoBehaviour, IEnemy
     public void Create(GameObject obj, Transform parent)
     {
         Instantiate(obj, parent);
-        Debug.Log("B출력");
+        //Debug.Log("B출력");
     }
     public void Move()
     {

@@ -38,7 +38,5 @@ public class Player : MonoBehaviour
             sr.sprite = sprites[(int)dir.left];
         else if(x > 0)
             sr.sprite = sprites[(int)dir.right];
-
-        //ÃÑ½î±â
     }
 }
