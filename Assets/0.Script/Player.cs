@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
 
     public int lifeValue;
     public int score;
-    public int coin;
+    public int moeny;
 
     SpriteRenderer sr;
     Animator anim;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         lifeValue = 3;
         UiManager.UpdateLifeIcon(lifeValue);
         score = 0;
-        coin = 0;
+        moeny = 0;
         power = 1;
     }
 
@@ -116,10 +117,44 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //피격
         if (collision.gameObject.tag == "Enemy")
         {
             OnHit();
             Destroy(collision.gameObject);
         }
+
+        //아이템
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            Item itemObj = collision.gameObject.GetComponent<Consumable>().item;
+
+            if (itemObj != null)
+            {
+                collision.gameObject.SetActive(false);
+                switch (itemObj.itemType)
+                {
+                    case Item.ItemType.COIN:
+                        //money증가
+                        AdjustCoinPoint(100);
+                        break;
+                    case Item.ItemType.BOOM:
+                        //boom 발생
+                        break;
+                    case Item.ItemType.POWER:
+                        //PowerUP
+                        if (power >= 2)
+                            break;
+                        power++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    public void AdjustCoinPoint(int coin)
+    {
+        moeny += coin;
     }
 }
