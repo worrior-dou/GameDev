@@ -19,13 +19,19 @@ public class UiManager : Singletone<UiManager>
     void Awake()
     {
         Player playerLogic = player.GetComponent<Player>();
-        scoreTxt.text = string.Format("{0:n0}", playerLogic.score);
-        coinTxt.text = string.Format("{0:n0}", playerLogic.coin);
+        scoreTxt.text = playerLogic.score.ToString();
+        coinTxt.text = playerLogic.moeny.ToString();
     }
     void Start()
     {
         gameOver.SetActive(false);
         uiImage.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    void Update()
+    {
+        ShowScore();
+        ShowMoney();
     }
 
     public void UpdateLifeIcon(int lifeValue)
@@ -50,9 +56,16 @@ public class UiManager : Singletone<UiManager>
         SceneManager.LoadScene(0);
     }
 
-    public void AddScore(int enemyScore)
+    public void ShowScore()
     {
         Player playerLogic = player.GetComponent<Player>();
-        playerLogic.score += enemyScore;
+        scoreTxt.text = playerLogic.score.ToString();
+        scoreTxt.text = string.Format("{0:n0}", scoreTxt.text);
+    }
+    public void ShowMoney()
+    {
+        Player playerLogic = player.GetComponent<Player>();
+        coinTxt.text = playerLogic.moeny.ToString();
+        coinTxt.text = string.Format("{0:n0}", coinTxt.text);
     }
 }
