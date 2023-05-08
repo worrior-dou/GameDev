@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet_e : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed = 1f;
     [HideInInspector] public Transform parent;
     Transform parentTemp;
     public Sprite[] bulletSprite;
