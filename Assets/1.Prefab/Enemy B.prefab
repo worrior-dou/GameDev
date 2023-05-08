@@ -101,9 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4924ef5b04cd9c24994c08672a5b2b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 500
-  health: 3
-  player: {fileID: 7185695572875743314, guid: 8ae0a2c8a2b91864d8172c01a85f3cdb, type: 3}
+  enemyStat: {fileID: 11400000, guid: e5dd95a7113147b449444ff19bf0e2f4, type: 2}
 --- !u!114 &2190476349500530072
 MonoBehaviour:
   m_ObjectHideFlags: 0

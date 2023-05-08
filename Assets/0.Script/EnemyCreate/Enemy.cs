@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyStat enemyStat;
     private IEnemy enemy;
-    public int score;
-    public int health;
+    int score;
+    int health;
     SpriteRenderer sr;
     Player player;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        score = enemyStat.scorePoint;
+        health = enemyStat.health;
     }
     void Update()
     {
@@ -31,7 +34,7 @@ public class Enemy : MonoBehaviour
         this.enemy = enemy;
     }
 
-    void OnHit(int dmg)
+    public void OnHit(int dmg)
     {
         health -= dmg;
         sr.color = new Color(0.75f, 0.75f, 0.75f, 1f);
