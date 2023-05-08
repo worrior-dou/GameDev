@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     Animator anim;
 
     [SerializeField] private Transform parentTemp;
+    [SerializeField] private GameObject boomEffect;
     [SerializeField] private UiManager UiManager;
 
     void Awake()
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         score = 0;
         moeny = 0;
         power = 1;
+        boomEffect.SetActive(false);
     }
 
     void Update()
@@ -136,10 +138,21 @@ public class Player : MonoBehaviour
                 {
                     case Item.ItemType.COIN:
                         //money증가
-                        AdjustCoinPoint(100);
+                        moeny += 100;
                         break;
                     case Item.ItemType.BOOM:
                         //boom 발생
+                        boomEffect.SetActive(true);
+                        Invoke("BoomEffectOff", 2.5f);
+                        //enemy attack
+                        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                        for (int i = 0; i < 1000; i++)
+                        {
+                            if (enemies[i] != null)
+                            {                                
+                                Destroy(enemies[i]);
+                            }
+                        }
                         break;
                     case Item.ItemType.POWER:
                         //PowerUP
@@ -153,8 +166,8 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void AdjustCoinPoint(int coin)
+    void BoomEffectOff()
     {
-        moeny += coin;
+        boomEffect.SetActive(false);
     }
 }
