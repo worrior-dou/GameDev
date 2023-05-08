@@ -14,5 +14,5 @@ public class Item : ScriptableObject
         BOOM,
         POWER
     }
-    public ItemType itemType;
+    public ItemType itemType;   
 }
