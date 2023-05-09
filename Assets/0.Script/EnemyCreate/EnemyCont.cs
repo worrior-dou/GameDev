@@ -10,14 +10,18 @@ public enum EnemyType
 public class EnemyCont : MonoBehaviour
 {
     [SerializeField] private Transform[] parentT;
+    [SerializeField] private Transform parentBoss;
+    EnemyStat stat;
 
     public GameObject _enemyA;
     public GameObject _enemyB;
     public GameObject _enemyC;
+    public GameObject _enemyBoss;
 
     private GameObject obj;
 
     private IEnemy enemy;
+    private bool isBoss = false;
 
     private void SetEnemyType(EnemyType type)
     {
@@ -38,6 +42,10 @@ public class EnemyCont : MonoBehaviour
                 enemy = gameObject.AddComponent<Enemy_C>();
                 obj = _enemyC;
                 break;
+            case EnemyType.Boss:
+                enemy = gameObject.AddComponent<Enemy_Boss>();
+                obj = _enemyBoss;
+                break;
         }
     }
 
@@ -45,18 +53,29 @@ public class EnemyCont : MonoBehaviour
 
     //利 积己
     private float spawnTimer = 0;
+    private float spawnTimerBoss = 0;
     void Update()
     {
         spawnTimer += Time.deltaTime;
-        int rand = Random.Range(0, 5);
+        int rand = Random.Range(0, 4);
         if (spawnTimer > Random.Range(2f, 4f))
         {
             spawnTimer = 0;
             if (parentT[rand].childCount < 5)
             {
-                SetEnemyType((EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length));
+                SetEnemyType((EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length-1));
                 enemy.Create(obj, parentT[rand]);
             }
+        }
+
+        //焊胶 积己
+        spawnTimerBoss += Time.deltaTime;
+        if (spawnTimerBoss > 4f && isBoss == false)
+        {
+            isBoss = true;
+            spawnTimer = 0;
+            SetEnemyType(EnemyType.Boss);
+            enemy.Create(obj, parentBoss);
         }
     }
 
@@ -72,5 +91,9 @@ public class EnemyCont : MonoBehaviour
     public void ChangeEnemyC()
     {
         SetEnemyType(EnemyType.C);
+    }
+    public void ChangeEnemyBoss()
+    {
+        SetEnemyType(EnemyType.Boss);
     }
 }
