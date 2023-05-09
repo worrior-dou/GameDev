@@ -13,7 +13,8 @@ public class EnemyStat : ScriptableObject
     {
         BALL,
         TRI,
-        RECT
+        RECT,
+        BOSS
     }
     public EnemyType enemyType;
 }
