@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_A : MonoBehaviour, IEnemy
+public class Enemy_A : Enemy, IEnemy
 {
     Vector3 center;
     float angle = 180f;
@@ -11,7 +11,6 @@ public class Enemy_A : MonoBehaviour, IEnemy
     float speed = 3f;
 
     float screen_left = -3f, screen_right = 3f;
-    //float screen_bottom = -6f, screen_top = 8f;
 
     void Awake()
     {
@@ -26,7 +25,6 @@ public class Enemy_A : MonoBehaviour, IEnemy
     public void Create(GameObject obj, Transform parent)
     {
         Instantiate(obj, parent);
-        //Debug.Log("AÃâ·Â");
     }
 
     public void Move()

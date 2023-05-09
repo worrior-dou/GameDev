@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyStat enemyStat;
     private IEnemy enemy;
+    public EnemyStat enemyStat;
     int score;
     int health;
     SpriteRenderer sr;
@@ -15,9 +15,6 @@ public class Enemy : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player").GetComponent<Player>();
-    }
-    void Start()
-    {
         score = enemyStat.scorePoint;
         health = enemyStat.health;
     }
@@ -45,17 +42,40 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void ReturnColor()
+    protected void ReturnColor()
     {
         sr.color = new Color(1f, 1f, 1f, 1f);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
             Bullet_p bullet = collision.gameObject.GetComponent<Bullet_p>();
             OnHit(bullet.dmg);
         }
+    }
+
+    protected void MoveHorizontal(float speedX, float speedY)
+    {
+        float x;
+        bool dir = true;//오른쪽
+        float screen_left = -3f, screen_right = 3f;
+
+        //좌우 움직임
+        if (dir == true)
+        {
+            x = Time.deltaTime * speedX;
+            if (transform.position.x > screen_right)
+                dir = false;
+        }
+        else
+        {
+            x = Time.deltaTime * -speedX;
+            if (transform.position.x < screen_left)
+                dir = true;
+        }
+
+        transform.Translate(x, -1f * Time.deltaTime * speedY, 0f);
     }
 }
