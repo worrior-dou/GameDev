@@ -12,11 +12,9 @@ public class Enemy_A : Enemy, IEnemy
 
     float screen_left = -3f, screen_right = 3f;
 
-    void Awake()
+    void Start()
     {
         center = transform.position;
-        radiusX = Random.Range(0.5f, 1.2f);
-        radiusY = Random.Range(0.5f, 1f);
     }
     void Update()
     {
@@ -41,5 +39,4 @@ public class Enemy_A : Enemy, IEnemy
         transform.position = new Vector3(clampX, y, transform.position.z);
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
-
 }

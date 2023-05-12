@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5398852899481751147
+--- !u!1 &2448406925874630519
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5398852899481751148}
-  - component: {fileID: 5398852899481751149}
-  - component: {fileID: -7449367894212313556}
+  - component: {fileID: 2448406925874630512}
+  - component: {fileID: 2448406925874630513}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -18,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5398852899481751148
+--- !u!4 &2448406925874630512
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5398852899481751147}
+  m_GameObject: {fileID: 2448406925874630519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,33 +32,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5398852899481751149
+--- !u!114 &2448406925874630513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5398852899481751147}
+  m_GameObject: {fileID: 2448406925874630519}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bc26eeba8caeac41b8e923e88169172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7449367894212313556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5398852899481751147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29cefb5614b5b1448b497d03f3d79c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 5398852899481751148}
-  bulletSprite:
-  - {fileID: 7431529995326980795, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
-  - {fileID: -7779215486825634471, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
-  - {fileID: 830317617348258784, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
-  speed: 5
+  bulletPrefab: {fileID: 8519299332111690557, guid: e99442d7dc437f441951a9c8885bf78c, type: 3}

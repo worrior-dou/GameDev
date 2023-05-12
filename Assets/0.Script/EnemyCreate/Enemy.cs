@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Enemy : MonoBehaviour
 {
     private IEnemy enemy;
@@ -15,8 +16,11 @@ public class Enemy : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player").GetComponent<Player>();
-        score = enemyStat.scorePoint;
-        health = enemyStat.health;
+        if (enemyStat != null)
+        {
+            score = enemyStat.scorePoint;
+            health = enemyStat.health;
+        }
     }
     void Update()
     {
@@ -36,6 +40,7 @@ public class Enemy : MonoBehaviour
         health -= dmg;
         sr.color = new Color(0.75f, 0.75f, 0.75f, 1f);
         Invoke("ReturnColor", 0.2f);
+        
         if (health <= 0)
         {
             player.score += score;

@@ -7,10 +7,11 @@ public enum EnemyType
     A, B, C, Boss
 }
 
-public class EnemyCont : MonoBehaviour
+public class EnemyCont : Singletone<EnemyCont>
 {
     [SerializeField] private Transform[] parentT;
     [SerializeField] private Transform parentBoss;
+    public Transform parentTemp;
     EnemyStat stat;
 
     public GameObject _enemyA;
@@ -48,8 +49,6 @@ public class EnemyCont : MonoBehaviour
                 break;
         }
     }
-
-
 
     //Àû »ý¼º
     private float spawnTimer = 0;

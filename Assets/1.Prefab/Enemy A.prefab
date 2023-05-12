@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3468085323075645292}
+  - {fileID: 6572990470241447536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,6 +155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8848879620929933885}
     m_Modifications:
+    - target: {fileID: 2448406925874630512, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.21
+      objectReference: {fileID: 0}
     - target: {fileID: 5398852899481751147, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
       propertyPath: m_Name
       value: TurretA
@@ -205,8 +209,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
---- !u!4 &3468085323075645292 stripped
+--- !u!4 &6572990470241447536 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5398852899481751148, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2448406925874630512, guid: 89ea00edbff8ea445bf5a32df4fca8fd, type: 3}
   m_PrefabInstance: {fileID: 8848879620105822464}
   m_PrefabAsset: {fileID: 0}

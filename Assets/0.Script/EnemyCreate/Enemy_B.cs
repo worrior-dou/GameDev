@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Enemy_B : Enemy, IEnemy
 {
+    float speedX = 0.1f;
+    float speedY= 10f;
+
     void Update()
     {
-        MoveHorizontal(0.1f, 10f);
+        MoveHorizontal(speedX, speedY);
     }
 
     public void Create(GameObject obj, Transform parent)

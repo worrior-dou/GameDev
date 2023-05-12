@@ -146,12 +146,11 @@ public class Player : MonoBehaviour
                         Invoke("BoomEffectOff", 2.5f);
                         //enemy attack
                         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                        for (int i = 0; i < 1000; i++)
+                        for (int i = 0; i < 100; i++)
                         {
-                            if (enemies[i] != null)
-                            {                                
-                                Destroy(enemies[i]);
-                            }
+                            if (enemies[i] is null)
+                                break;
+                            Destroy(enemies[i]);
                         }
                         break;
                     case Item.ItemType.POWER:

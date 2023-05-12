@@ -832,7 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401803545}
   m_Layer: 0
-  m_Name: SpawnPoints
+  m_Name: SpawnGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,6 +1506,7 @@ MonoBehaviour:
   - {fileID: 1596008195}
   - {fileID: 520497238}
   parentBoss: {fileID: 220294803}
+  parentTemp: {fileID: 1894401388}
   _enemyA: {fileID: 8848879621530182546, guid: 765b7a1c3885b5c4bba6afe623715533, type: 3}
   _enemyB: {fileID: 2190476349500530054, guid: c98780db98a55524295376430855762f, type: 3}
   _enemyC: {fileID: 2132724570011737357, guid: 3c43d13a4a72fd74b97bec1779d542d1, type: 3}
@@ -2731,7 +2732,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3651261607514563399, guid: 7ae1fedd75c7436499fecd2f6fc5303f, type: 3}
-  bulletE: {fileID: 3615334988852348897, guid: e99442d7dc437f441951a9c8885bf78c, type: 3}
 --- !u!1 &1941841509
 GameObject:
   m_ObjectHideFlags: 0

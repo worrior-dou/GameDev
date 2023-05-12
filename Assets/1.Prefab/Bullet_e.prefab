@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5610314545505854425}
   - component: {fileID: 5610314545505854424}
-  - component: {fileID: 3615334988852348897}
+  - component: {fileID: 8519299332111690557}
   - component: {fileID: 2435058751442712606}
   - component: {fileID: 2387740738377061332}
   m_Layer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3615334988852348897
+--- !u!114 &8519299332111690557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,16 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5610314545505854430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2398c1778e5eb459428d521ce95fc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f59f67e1c111b34da82b60f1a2bae78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  parent: {fileID: 0}
-  bulletSprite:
-  - {fileID: 7431529995326980795, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
-  - {fileID: -7779215486825634471, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
-  - {fileID: 830317617348258784, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
-  sr: {fileID: 5610314545505854424}
 --- !u!50 &2435058751442712606
 Rigidbody2D:
   serializedVersion: 4
