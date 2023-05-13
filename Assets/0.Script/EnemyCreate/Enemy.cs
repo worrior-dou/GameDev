@@ -11,11 +11,6 @@ public class Enemy : MonoBehaviour
     SpriteRenderer sr;
     Player player;
 
-    Transform parentBullet;
-    Transform parentBullet2 = null;
-
-    Transform parentTemp;
-
     float angle = 180f;
     float radiusX = 1f;
     float radiusY = 1f;
@@ -39,17 +34,6 @@ public class Enemy : MonoBehaviour
         center = transform.position;
     }
 
-    public void SetParent(Transform parentTemp)
-    {
-        //this.parentBullet = transform.Find("Turret")
-        this.parentBullet = transform.GetChild(0);
-        if (type == EnemyType.C)
-        {
-            this.parentBullet2 = transform.GetChild(1);
-        }
-        this.parentTemp = parentTemp;
-    }
-
     void Update()
     {
         if (transform.position.y < -6.5f)
@@ -57,26 +41,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Fire();
-
         MoveChange(type);
-    }
-
-    void Fire()
-    {
-        if (!Input.GetKeyDown(KeyCode.F1))
-            return;
-        //½´ÆÃ
-        if (BulletPool_e.Instance.CheckPool())
-        {
-            SetParent(parentTemp);
-            GameObject bullet = BulletPool_e.Instance.CreateBP(parentBullet, parentTemp);
-            if (parentBullet2 != null)
-            {
-                GameObject bullet2 = BulletPool_e.Instance.CreateBP(parentBullet2, parentTemp);
-            }
-        }
-        BulletPool_e.Instance.Play();
     }
 
     public void OnHit(int dmg)
@@ -126,7 +91,6 @@ public class Enemy : MonoBehaviour
     {
         float x;
         bool dir = true;//¿À¸¥ÂÊ
-        float screen_left = -3f, screen_right = 3f;
 
         //ÁÂ¿ì ¿òÁ÷ÀÓ
         if (dir == true)
@@ -151,7 +115,6 @@ public class Enemy : MonoBehaviour
         float x = center.x + Mathf.Cos(angle) * radiusX;
         float y = center.y + Mathf.Sin(angle) * radiusY;
         float clampX = Mathf.Clamp(x, screen_left, screen_right);
-        //float clampY = Mathf.Clamp(y, screen_bottom, screen_top);
         //Á¶±Ý¾¿ ³»·Á¿È
         center.y -= 0.6f * Time.deltaTime;
 

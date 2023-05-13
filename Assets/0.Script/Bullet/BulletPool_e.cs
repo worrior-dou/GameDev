@@ -8,9 +8,10 @@ public class BulletPool_e : Singletone<BulletPool_e>
     public Bullet_e bullet;
     Queue<Bullet_e> pools = new Queue<Bullet_e>();
 
+    [SerializeField] private Transform parentTemp;
+
     void Start()
     {
-        //P
         for (int i = 0; i < transform.childCount; i++)
         {
             pools.Enqueue(transform.GetChild(i).GetComponent<Bullet_e>());
@@ -24,25 +25,30 @@ public class BulletPool_e : Singletone<BulletPool_e>
         return false;
     }
     //생성
-    public GameObject CreateBP(Transform parent, Transform parentTemp)
+    public GameObject CreateBP()
     {
-        Bullet_e b = Instantiate(bullet, parent);
-        b.SetParents(parent, parentTemp);
+        Bullet_e b = Instantiate(bullet, parentTemp);
         pools.Enqueue(b);
         return b.gameObject;
     }
     //재활용
     public void ReturnBP(Bullet_e b)
     {
+        b.transform.SetParent(parentTemp);
         pools.Enqueue(b);
     }
     //활용
-    public void Play()
+    public Bullet_e Play(Transform parent)
     {
-        Bullet_e b = pools.Dequeue();        
-        b.SetParentTemp();
+        Bullet_e b = pools.Dequeue();
+        b.transform.SetParent(parent);
+        b.transform.localPosition = Vector3.zero;
         b.gameObject.SetActive(true);
+        return b;
     }
 
-    //총알이 temp에 계속 상주하게 해주기
+    public Transform SetParentTemp()
+    {
+        return parentTemp;
+    }
 }
