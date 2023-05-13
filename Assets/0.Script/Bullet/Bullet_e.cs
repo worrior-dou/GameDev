@@ -6,27 +6,44 @@ using UnityEngine.Pool;
 public class Bullet_e : MonoBehaviour
 {
     float speed = 5f;
-    private IObjectPool<Bullet_e> bulletPool;
-    //Transform turretTransform;
 
-    public void SetPool(IObjectPool<Bullet_e> pool)
+    Transform parent;
+    Transform parentTemp;
+
+    public void SetParents(Transform parent, Transform parentTemp)
     {
-        bulletPool = pool;
+        this.parent = parent;
+        this.parentTemp = parentTemp;
+        SetParentTemp();
+    }
+    public void SetParentTemp()
+    {
+        transform.SetParent(parentTemp);
     }
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(Vector2.down * speed * Time.deltaTime);       
+        
+        // 멀리가면 : 비활성화 + 객체 재활용
+        if (transform.localPosition.y < -10f)
+            ReadyForPool();
     }
 
-    void OnBecameInvisible()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        bulletPool.Release(this);
+        if (collision.tag.Equals("PlayerBullet")|| collision.tag.Equals("Player"))
+        {
+            ReadyForPool();
+        }
+    }
+
+    void ReadyForPool()
+    {
+        Debug.Log("------");
+        transform.SetParent(parent);
+        transform.localPosition = Vector3.zero;
+        BulletPool_e.Instance.ReturnBP(this);
+        gameObject.SetActive(false);
     }
 }

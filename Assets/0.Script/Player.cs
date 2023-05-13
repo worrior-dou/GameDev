@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             OnHit();
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
 
         //æ∆¿Ã≈€
@@ -146,10 +146,8 @@ public class Player : MonoBehaviour
                         Invoke("BoomEffectOff", 2.5f);
                         //enemy attack
                         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                        for (int i = 0; i < 100; i++)
+                        for (int i = 0; i < enemies.Length; i++)
                         {
-                            if (enemies[i] is null)
-                                break;
                             Destroy(enemies[i]);
                         }
                         break;

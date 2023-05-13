@@ -9,8 +9,10 @@ public enum EnemyType
 
 public class EnemyCont : Singletone<EnemyCont>
 {
+    //스폰
     [SerializeField] private Transform[] parentT;
     [SerializeField] private Transform parentBoss;
+    //총알
     public Transform parentTemp;
     EnemyStat stat;
 
@@ -21,30 +23,28 @@ public class EnemyCont : Singletone<EnemyCont>
 
     private GameObject obj;
 
-    private IEnemy enemy;
     private bool isBoss = false;
+
+    void Awake()
+    {
+        obj = GetComponent<GameObject>();
+    }
 
     private void SetEnemyType(EnemyType type)
     {
-        Component c = gameObject.GetComponent<IEnemy>() as Component;
-
         switch (type)
         {
             default:
             case EnemyType.A:
-                enemy = gameObject.AddComponent<Enemy_A>();
                 obj = _enemyA;
                 break;
             case EnemyType.B:
-                enemy = gameObject.AddComponent<Enemy_B>();
                 obj = _enemyB;
                 break;
             case EnemyType.C:
-                enemy = gameObject.AddComponent<Enemy_C>();
                 obj = _enemyC;
                 break;
             case EnemyType.Boss:
-                enemy = gameObject.AddComponent<Enemy_Boss>();
                 obj = _enemyBoss;
                 break;
         }
@@ -63,7 +63,7 @@ public class EnemyCont : Singletone<EnemyCont>
             if (parentT[rand].childCount < 5)
             {
                 SetEnemyType((EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length-1));
-                enemy.Create(obj, parentT[rand]);
+                Create(obj, parentT[rand]);
             }
         }
 
@@ -74,25 +74,11 @@ public class EnemyCont : Singletone<EnemyCont>
             isBoss = true;
             spawnTimer = 0;
             SetEnemyType(EnemyType.Boss);
-            enemy.Create(obj, parentBoss);
+            Create(obj, parentBoss);
         }
     }
-
-    //전략
-    public void ChangeEnemyA()
+    public void Create(GameObject obj, Transform parent)
     {
-        SetEnemyType(EnemyType.A);
-    }
-    public void ChangeEnemyB()
-    {
-        SetEnemyType(EnemyType.B);
-    }
-    public void ChangeEnemyC()
-    {
-        SetEnemyType(EnemyType.C);
-    }
-    public void ChangeEnemyBoss()
-    {
-        SetEnemyType(EnemyType.Boss);
+        Instantiate(obj, parent);
     }
 }

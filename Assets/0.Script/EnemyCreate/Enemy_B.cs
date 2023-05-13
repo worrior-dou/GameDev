@@ -2,18 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_B : Enemy, IEnemy
+public class Enemy_B : Enemy
 {
-    float speedX = 0.1f;
-    float speedY= 10f;
-
-    void Update()
+    void Start()
     {
-        MoveHorizontal(speedX, speedY);
-    }
-
-    public void Create(GameObject obj, Transform parent)
-    {
-        Instantiate(obj, parent);
+        type = EnemyType.B;
     }
 }
