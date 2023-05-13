@@ -21,9 +21,9 @@ public class EnemyCont : Singletone<EnemyCont>
     public GameObject _enemyC;
     public GameObject _enemyBoss;
 
-    private GameObject obj;
+    GameObject obj;
 
-    private bool isBoss = false;
+    bool isBoss = false;
 
     void Awake()
     {
@@ -69,7 +69,7 @@ public class EnemyCont : Singletone<EnemyCont>
 
         //보스 생성
         spawnTimerBoss += Time.deltaTime;
-        if (spawnTimerBoss > 4f && isBoss == false)
+        if (spawnTimerBoss > 10f && isBoss == false)
         {
             isBoss = true;
             spawnTimer = 0;

@@ -80,10 +80,7 @@ public class Player : MonoBehaviour
             //CreatBP(총알속도, 총알생성위치, 임시부모, 총알스프라이트)
             GameObject bullet = BulletPool.Instance.CreateBP(power, speedBullet, transform, parentTemp, sp[power-1]);
         }
-        else
-        {
-            BulletPool.Instance.Play(power, speedBullet, sp[power-1]);
-        }
+        BulletPool.Instance.Play(power, speedBullet, sp[power-1]);
 
         curShootDelay = 0;
     }
